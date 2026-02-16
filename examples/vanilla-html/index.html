@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LiveLLM — Vanilla HTML Example</title>
+  <link rel="stylesheet" href="../../src/themes/default.css">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 24px;
+      background: #f5f5f7;
+      color: #1a1a1a;
+    }
+    h1 { margin-bottom: 8px; }
+    .subtitle { color: #6c757d; margin-bottom: 24px; }
+    .chat-container {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      overflow: hidden;
+    }
+    .chat-header {
+      background: #6c5ce7;
+      color: white;
+      padding: 16px 20px;
+      font-weight: 600;
+    }
+    .chat-messages {
+      padding: 20px;
+      min-height: 200px;
+    }
+    .chat-input {
+      display: flex;
+      border-top: 1px solid #e0e0e0;
+      padding: 12px;
+      gap: 8px;
+    }
+    .chat-input button {
+      padding: 8px 20px;
+      background: #6c5ce7;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .chat-input button:hover { background: #5a4bd1; }
+    .demo-section {
+      margin-top: 24px;
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+    .demo-section h3 { margin-bottom: 12px; }
+    pre {
+      background: #f8f9fa;
+      padding: 12px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+    #output { margin-top: 12px; }
+  </style>
+</head>
+<body>
+  <h1>LiveLLM Example</h1>
+  <p class="subtitle">Bring LLM responses to life</p>
+
+  <div class="chat-container">
+    <div class="chat-header">AI Assistant</div>
+    <div class="chat-messages" id="chat-output"></div>
+    <div class="chat-input">
+      <button onclick="renderExample('basic')">Basic Markdown</button>
+      <button onclick="renderExample('alert')">With Alert</button>
+      <button onclick="renderExample('badge')">With Badges</button>
+      <button onclick="renderExample('tabs')">With Tabs</button>
+      <button onclick="renderExample('mixed')">Mixed</button>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h3>Action Log</h3>
+    <div id="action-log" style="font-family: monospace; font-size: 12px; color: #6c757d;">
+      Interact with components to see action events here...
+    </div>
+  </div>
+
+  <!-- Load LiveLLM from built file -->
+  <script src="../../dist/livellm.min.js"></script>
+  <script>
+    // Initialize LiveLLM
+    const livellm = new LiveLLM.LiveLLMInstance();
+    livellm.init({
+      transformer: { mode: 'off', detectors: 'all', confidenceThreshold: 0.7 },
+    });
+
+    // Register built-in components manually for the example
+    // (In production, these are auto-registered via the default export)
+
+    // Listen for actions
+    livellm.on('action:triggered', (action) => {
+      const log = document.getElementById('action-log');
+      const entry = document.createElement('div');
+      entry.textContent = `[${new Date().toLocaleTimeString()}] ${action.component}:${action.action} → ${JSON.stringify(action.value)}`;
+      log.prepend(entry);
+    });
+
+    const examples = {
+      basic: `# Welcome!
+
+This is a **standard Markdown** response from an LLM.
+
+- Item one
+- Item two
+- Item three
+
+> LiveLLM renders all standard Markdown perfectly.`,
+
+      alert: `# System Status
+
+Here's an important notification:
+
+\`\`\`livellm:alert
+{"type": "success", "text": "All systems are operational. Last check: 2 minutes ago."}
+\`\`\`
+
+And a warning:
+
+\`\`\`livellm:alert
+{"type": "warning", "text": "Scheduled maintenance in 24 hours. Please save your work."}
+\`\`\``,
+
+      badge: `# Service Dashboard
+
+Current service status:
+
+- **API Server**: \`livellm:badge{"text":"Online","color":"green"}\`
+- **Database**: \`livellm:badge{"text":"Online","color":"green"}\`
+- **Cache**: \`livellm:badge{"text":"Degraded","color":"yellow"}\`
+- **CDN**: \`livellm:badge{"text":"Offline","color":"red"}\``,
+
+      tabs: `# Project Documentation
+
+Here's the documentation organized by topic:
+
+\`\`\`livellm:tabs
+{
+  "tabs": [
+    {"label": "Getting Started", "content": "Install with npm install livellm and add a script tag to your HTML."},
+    {"label": "API Reference", "content": "LiveLLM.init(config) — Initialize the library. LiveLLM.render(md, el) — Render markdown."},
+    {"label": "Components", "content": "Built-in: alert, badge, tabs, map, chart, form, gallery, table-plus, and more."}
+  ]
+}
+\`\`\``,
+
+      mixed: `# Quarterly Report
+
+## Overview
+
+The quarter ended with \`livellm:badge{"text":"Strong Growth","color":"green"}\` across all metrics.
+
+\`\`\`livellm:alert
+{"type": "info", "text": "This report covers Q4 2025 performance data."}
+\`\`\`
+
+## Details by Department
+
+\`\`\`livellm:tabs
+{
+  "tabs": [
+    {"label": "Engineering", "content": "Shipped 47 features, 12 bug fixes. Team grew from 15 to 22."},
+    {"label": "Sales", "content": "Revenue up 34% QoQ. 15 new enterprise clients onboarded."},
+    {"label": "Marketing", "content": "Website traffic up 52%. Social media engagement doubled."}
+  ]
+}
+\`\`\`
+
+\`\`\`livellm:alert
+{"type": "success", "text": "All KPIs exceeded targets this quarter!"}
+\`\`\`
+
+> Full detailed report available upon request.`
+    };
+
+    function renderExample(name) {
+      const container = document.getElementById('chat-output');
+      container.innerHTML = '';
+      livellm.render(examples[name], container);
+    }
+
+    // Render the basic example on load
+    renderExample('basic');
+  </script>
+</body>
+</html>

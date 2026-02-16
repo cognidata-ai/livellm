@@ -1,0 +1,84 @@
+{
+  "name": "livellm",
+  "version": "0.1.0",
+  "description": "Interactive components for LLM responses. Extends Markdown with Web Components.",
+  "main": "dist/livellm.cjs.js",
+  "module": "dist/livellm.esm.js",
+  "browser": "dist/livellm.min.js",
+  "types": "dist/livellm.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/livellm.esm.js",
+      "require": "./dist/livellm.cjs.js",
+      "browser": "./dist/livellm.min.js",
+      "types": "./dist/livellm.d.ts"
+    },
+    "./components/*": {
+      "import": "./dist/components/*.js",
+      "types": "./dist/components/*.d.ts"
+    },
+    "./themes/*": "./src/themes/*",
+    "./protocol": {
+      "import": "./dist/protocol/index.js",
+      "require": "./dist/protocol/index.js",
+      "types": "./dist/protocol/index.d.ts"
+    }
+  },
+  "files": [
+    "dist/",
+    "src/themes/",
+    "README.md",
+    "LIVELLM.md",
+    "SKILL.md",
+    "LICENSE"
+  ],
+  "sideEffects": [
+    "*.css"
+  ],
+  "keywords": [
+    "llm",
+    "ai",
+    "markdown",
+    "web-components",
+    "interactive",
+    "chat",
+    "streaming",
+    "components",
+    "openai",
+    "anthropic"
+  ],
+  "repository": "github:cognidata/livellm",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:coverage": "vitest --coverage",
+    "lint": "eslint src/",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run build && npm run test:run"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^28.0.0",
+    "@rollup/plugin-node-resolve": "^16.0.0",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^12.1.0",
+    "@types/markdown-it": "^14.1.2",
+    "@typescript-eslint/eslint-plugin": "^8.18.0",
+    "@typescript-eslint/parser": "^8.18.0",
+    "@vitest/coverage-v8": "^2.1.0",
+    "eslint": "^9.17.0",
+    "happy-dom": "^15.11.0",
+    "rollup": "^4.30.0",
+    "tslib": "^2.8.0",
+    "typescript": "^5.7.0",
+    "vitest": "^2.1.0"
+  },
+  "dependencies": {
+    "markdown-it": "^14.1.0"
+  }
+}

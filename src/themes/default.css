@@ -1,0 +1,678 @@
+:root {
+  /* ═══ Colors ═══ */
+  --livellm-primary: #6c5ce7;
+  --livellm-primary-light: #a29bfe;
+  --livellm-primary-dark: #5a4bd1;
+  --livellm-success: #00cec9;
+  --livellm-warning: #fdcb6e;
+  --livellm-danger: #ff6b6b;
+  --livellm-info: #74b9ff;
+
+  /* ═══ Backgrounds ═══ */
+  --livellm-bg: #ffffff;
+  --livellm-bg-secondary: #f8f9fa;
+  --livellm-bg-component: #ffffff;
+
+  /* ═══ Text ═══ */
+  --livellm-text: #1a1a1a;
+  --livellm-text-secondary: #6c757d;
+  --livellm-text-muted: #adb5bd;
+
+  /* ═══ Borders ═══ */
+  --livellm-border: #e0e0e0;
+  --livellm-border-radius: 8px;
+  --livellm-border-radius-lg: 12px;
+
+  /* ═══ Typography ═══ */
+  --livellm-font: system-ui, -apple-system, sans-serif;
+  --livellm-font-heading: var(--livellm-font);
+  --livellm-font-mono: 'Fira Code', 'JetBrains Mono', 'Cascadia Code', 'Consolas', monospace;
+  --livellm-font-size: 15px;
+  --livellm-line-height: 1.6;
+
+  /* ═══ Prose Typography ═══ */
+  --livellm-prose-line-height: 1.8;
+  --livellm-prose-paragraph-spacing: 1.15em;
+  --livellm-prose-text-align: justify;
+  --livellm-prose-max-width: 100%;
+
+  /* ═══ Headings ═══ */
+  --livellm-heading-color: #0f0f0f;
+  --livellm-heading-letter-spacing: -0.02em;
+  --livellm-heading-line-height: 1.3;
+
+  /* ═══ Blockquotes ═══ */
+  --livellm-blockquote-border: 3px solid var(--livellm-primary, #6c5ce7);
+  --livellm-blockquote-bg: rgba(108, 92, 231, 0.04);
+  --livellm-blockquote-text: var(--livellm-text-secondary, #6c757d);
+
+  /* ═══ Code ═══ */
+  --livellm-code-bg: #f4f2ff;
+  --livellm-code-text: #5a4bd1;
+  --livellm-code-block-bg: #1e1e2e;
+  --livellm-code-block-text: #cdd6f4;
+
+  /* ═══ Links ═══ */
+  --livellm-link-color: var(--livellm-primary, #6c5ce7);
+  --livellm-link-hover: var(--livellm-primary-dark, #5a4bd1);
+  --livellm-link-decoration: underline;
+  --livellm-link-decoration-color: rgba(108, 92, 231, 0.3);
+
+  /* ═══ Spacing ═══ */
+  --livellm-spacing-xs: 4px;
+  --livellm-spacing-sm: 8px;
+  --livellm-spacing-md: 16px;
+  --livellm-spacing-lg: 24px;
+
+  /* ═══ Shadows ═══ */
+  --livellm-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --livellm-shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.12);
+
+  /* ═══ Transitions ═══ */
+  --livellm-transition: 0.2s ease;
+
+  /* ═══ Skeleton ═══ */
+  --livellm-skeleton-bg: #e0e0e0;
+  --livellm-skeleton-shimmer: #f0f0f0;
+}
+
+/* ═══ Fallback styles ═══ */
+.livellm-fallback {
+  margin: 8px 0;
+  border: 1px solid var(--livellm-border, #e0e0e0);
+  border-radius: var(--livellm-border-radius, 8px);
+  overflow: hidden;
+}
+
+.livellm-fallback pre {
+  margin: 0;
+  padding: 12px 16px;
+  background: var(--livellm-bg-secondary, #f8f9fa);
+  font-family: var(--livellm-font-mono, monospace);
+  font-size: 13px;
+  line-height: 1.5;
+  overflow-x: auto;
+}
+
+.livellm-fallback-error {
+  padding: 8px 16px;
+  background: #fdedec;
+  color: #922b21;
+  font-size: 12px;
+  border-bottom: 1px solid #f5b7b1;
+}
+
+/* ═══ Error styles ═══ */
+.livellm-error {
+  margin: 8px 0;
+  border: 1px solid var(--livellm-danger, #ff6b6b);
+  border-radius: var(--livellm-border-radius, 8px);
+  overflow: hidden;
+}
+
+.livellm-error-header {
+  padding: 8px 16px;
+  background: #fdedec;
+  color: #922b21;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.livellm-error-list {
+  margin: 0;
+  padding: 8px 16px 8px 32px;
+  background: #fff5f5;
+  font-size: 12px;
+  color: #922b21;
+}
+
+.livellm-error pre {
+  margin: 0;
+  padding: 12px 16px;
+  background: var(--livellm-bg-secondary, #f8f9fa);
+  font-family: var(--livellm-font-mono, monospace);
+  font-size: 13px;
+  line-height: 1.5;
+  overflow-x: auto;
+}
+
+/* ═══ Skeleton styles ═══ */
+.livellm-skeleton-wrapper {
+  margin: 8px 0;
+}
+
+.livellm-skeleton {
+  background: var(--livellm-skeleton-bg, #e0e0e0);
+  border-radius: var(--livellm-border-radius, 8px);
+  overflow: hidden;
+  position: relative;
+}
+
+.livellm-skeleton .shimmer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--livellm-skeleton-shimmer, #f0f0f0),
+    transparent
+  );
+  animation: livellm-shimmer 1.5s infinite;
+}
+
+@keyframes livellm-shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* ═══ Stream cursor ═══ */
+.livellm-cursor {
+  display: inline;
+  animation: livellm-blink 1s step-end infinite;
+  color: var(--livellm-primary, #6c5ce7);
+}
+
+@keyframes livellm-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* ═══ Stream block ═══ */
+.livellm-stream-block {
+  animation: livellm-fadein 0.15s ease;
+}
+
+@keyframes livellm-fadein {
+  from { opacity: 0.7; }
+  to { opacity: 1; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   PROSE STYLES — Typography for rendered Markdown content
+   ═══════════════════════════════════════════════════════════════════ */
+
+.livellm-prose {
+  font-family: var(--livellm-font, system-ui, -apple-system, sans-serif);
+  font-size: var(--livellm-font-size, 15px);
+  color: var(--livellm-text, #1a1a1a);
+  line-height: var(--livellm-prose-line-height, 1.8);
+  max-width: var(--livellm-prose-max-width, 72ch);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+}
+
+/* ─── Paragraphs ─────────────────────────────────────────────── */
+
+.livellm-prose p {
+  text-align: var(--livellm-prose-text-align, justify);
+  margin: 0 0 var(--livellm-prose-paragraph-spacing, 1.15em) 0;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  orphans: 3;
+  widows: 3;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.livellm-prose p:last-child {
+  margin-bottom: 0;
+}
+
+/* Lead paragraph — first paragraph after a heading */
+.livellm-prose h1 + p,
+.livellm-prose h2 + p {
+  font-size: 1.05em;
+  color: var(--livellm-text-secondary, #6c757d);
+  line-height: 1.85;
+}
+
+/* ─── Headings ───────────────────────────────────────────────── */
+
+.livellm-prose h1,
+.livellm-prose h2,
+.livellm-prose h3,
+.livellm-prose h4,
+.livellm-prose h5,
+.livellm-prose h6 {
+  font-family: var(--livellm-font-heading, var(--livellm-font, system-ui, -apple-system, sans-serif));
+  color: var(--livellm-heading-color, #0f0f0f);
+  line-height: var(--livellm-heading-line-height, 1.3);
+  letter-spacing: var(--livellm-heading-letter-spacing, -0.02em);
+  margin-top: 1.8em;
+  margin-bottom: 0.6em;
+  text-align: left;
+}
+
+.livellm-prose h1:first-child,
+.livellm-prose h2:first-child,
+.livellm-prose h3:first-child {
+  margin-top: 0;
+}
+
+.livellm-prose h1 {
+  font-size: 2em;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  padding-bottom: 0.3em;
+  border-bottom: 2px solid var(--livellm-border, #e0e0e0);
+}
+
+.livellm-prose h2 {
+  font-size: 1.55em;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  padding-bottom: 0.25em;
+  border-bottom: 1px solid var(--livellm-border, #e0e0e0);
+}
+
+.livellm-prose h3 {
+  font-size: 1.3em;
+  font-weight: 650;
+  letter-spacing: -0.015em;
+}
+
+.livellm-prose h4 {
+  font-size: 1.1em;
+  font-weight: 600;
+}
+
+.livellm-prose h5 {
+  font-size: 1em;
+  font-weight: 600;
+  color: var(--livellm-text-secondary, #6c757d);
+}
+
+.livellm-prose h6 {
+  font-size: 0.9em;
+  font-weight: 600;
+  color: var(--livellm-text-muted, #adb5bd);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ─── Blockquotes ────────────────────────────────────────────── */
+
+.livellm-prose blockquote {
+  margin: 1.5em 0;
+  padding: 1em 1.25em 1em 1.5em;
+  border-left: var(--livellm-blockquote-border, 3px solid #6c5ce7);
+  background: var(--livellm-blockquote-bg, rgba(108, 92, 231, 0.04));
+  border-radius: 0 var(--livellm-border-radius, 8px) var(--livellm-border-radius, 8px) 0;
+  color: var(--livellm-blockquote-text, #6c757d);
+  font-style: italic;
+  position: relative;
+}
+
+.livellm-prose blockquote::before {
+  content: '\201C';
+  position: absolute;
+  top: -8px;
+  left: 12px;
+  font-size: 2.5em;
+  font-family: Georgia, 'Times New Roman', serif;
+  color: var(--livellm-primary-light, #a29bfe);
+  opacity: 0.4;
+  line-height: 1;
+}
+
+.livellm-prose blockquote p {
+  margin-bottom: 0.5em;
+  text-align: left;
+  font-size: 0.98em;
+}
+
+.livellm-prose blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* Nested blockquotes */
+.livellm-prose blockquote blockquote {
+  margin: 0.75em 0;
+  border-left-color: var(--livellm-primary-light, #a29bfe);
+  background: rgba(108, 92, 231, 0.02);
+}
+
+.livellm-prose blockquote blockquote::before {
+  display: none;
+}
+
+/* ─── Links ──────────────────────────────────────────────────── */
+
+.livellm-prose a {
+  color: var(--livellm-link-color, #6c5ce7);
+  text-decoration: var(--livellm-link-decoration, underline);
+  text-decoration-color: var(--livellm-link-decoration-color, rgba(108, 92, 231, 0.3));
+  text-underline-offset: 2px;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+  font-weight: 500;
+}
+
+.livellm-prose a:hover {
+  color: var(--livellm-link-hover, #5a4bd1);
+  text-decoration-color: var(--livellm-link-hover, #5a4bd1);
+}
+
+.livellm-prose a:focus-visible {
+  outline: 2px solid var(--livellm-primary-light, #a29bfe);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ─── Lists ──────────────────────────────────────────────────── */
+
+.livellm-prose ul,
+.livellm-prose ol {
+  margin: 0.75em 0 1.15em 0;
+  padding-left: 1.75em;
+}
+
+.livellm-prose li {
+  margin-bottom: 0.35em;
+  padding-left: 0.3em;
+  line-height: 1.7;
+}
+
+.livellm-prose li:last-child {
+  margin-bottom: 0;
+}
+
+.livellm-prose li > p {
+  margin-bottom: 0.5em;
+}
+
+/* Custom bullet style */
+.livellm-prose ul {
+  list-style: none;
+}
+
+.livellm-prose ul > li {
+  position: relative;
+}
+
+.livellm-prose ul > li::before {
+  content: '';
+  position: absolute;
+  left: -1.25em;
+  top: 0.65em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--livellm-primary, #6c5ce7);
+  opacity: 0.7;
+}
+
+/* Nested list bullets */
+.livellm-prose ul ul > li::before {
+  background: transparent;
+  border: 1.5px solid var(--livellm-primary-light, #a29bfe);
+  width: 5px;
+  height: 5px;
+}
+
+.livellm-prose ul ul ul > li::before {
+  border-radius: 1px;
+  background: var(--livellm-text-muted, #adb5bd);
+  border: none;
+  width: 5px;
+  height: 5px;
+}
+
+/* Ordered lists with colored numbers */
+.livellm-prose ol {
+  list-style: none;
+  counter-reset: livellm-ol;
+}
+
+.livellm-prose ol > li {
+  counter-increment: livellm-ol;
+  position: relative;
+}
+
+.livellm-prose ol > li::before {
+  content: counter(livellm-ol) '.';
+  position: absolute;
+  left: -1.75em;
+  width: 1.5em;
+  text-align: right;
+  color: var(--livellm-primary, #6c5ce7);
+  font-weight: 600;
+  font-size: 0.9em;
+  font-feature-settings: 'tnum' 1;
+}
+
+/* Nested ordered lists */
+.livellm-prose ol ol > li::before {
+  color: var(--livellm-text-secondary, #6c757d);
+  font-weight: 500;
+}
+
+/* Nested list spacing */
+.livellm-prose ul ul,
+.livellm-prose ol ol,
+.livellm-prose ul ol,
+.livellm-prose ol ul {
+  margin: 0.35em 0 0.35em 0;
+}
+
+/* ─── Code Inline ────────────────────────────────────────────── */
+
+.livellm-prose code {
+  font-family: var(--livellm-font-mono, 'Fira Code', monospace);
+  font-size: 0.88em;
+  background: var(--livellm-code-bg, #f4f2ff);
+  color: var(--livellm-code-text, #5a4bd1);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  font-weight: 500;
+  word-break: break-word;
+}
+
+/* ─── Code Blocks ────────────────────────────────────────────── */
+
+.livellm-prose pre {
+  margin: 1.25em 0;
+  padding: 0;
+  border-radius: var(--livellm-border-radius, 8px);
+  overflow: hidden;
+  background: var(--livellm-code-block-bg, #1e1e2e);
+  box-shadow: var(--livellm-shadow, 0 2px 8px rgba(0, 0, 0, 0.08));
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.livellm-prose pre code {
+  display: block;
+  padding: 1em 1.25em;
+  background: transparent;
+  color: var(--livellm-code-block-text, #cdd6f4);
+  font-size: 0.875em;
+  line-height: 1.7;
+  overflow-x: auto;
+  border-radius: 0;
+  font-weight: 400;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ─── Horizontal Rules ───────────────────────────────────────── */
+
+.livellm-prose hr {
+  border: none;
+  height: 1px;
+  margin: 2em 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--livellm-border, #e0e0e0) 20%,
+    var(--livellm-border, #e0e0e0) 80%,
+    transparent
+  );
+  position: relative;
+}
+
+.livellm-prose hr::after {
+  content: '\2022\00a0\00a0\2022\00a0\00a0\2022';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--livellm-bg, #ffffff);
+  padding: 0 12px;
+  color: var(--livellm-text-muted, #adb5bd);
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+/* ─── Tables ─────────────────────────────────────────────────── */
+
+.livellm-prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.25em 0;
+  font-size: 0.925em;
+  border-radius: var(--livellm-border-radius, 8px);
+  overflow: hidden;
+  border: 1px solid var(--livellm-border, #e0e0e0);
+}
+
+.livellm-prose thead {
+  background: var(--livellm-bg-secondary, #f8f9fa);
+  border-bottom: 2px solid var(--livellm-border, #e0e0e0);
+}
+
+.livellm-prose th {
+  padding: 10px 14px;
+  font-weight: 600;
+  text-align: left;
+  color: var(--livellm-heading-color, #0f0f0f);
+  font-size: 0.85em;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.livellm-prose td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--livellm-border, #e0e0e0);
+  vertical-align: top;
+}
+
+.livellm-prose tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.livellm-prose tbody tr:nth-child(even) {
+  background: rgba(0, 0, 0, 0.015);
+}
+
+.livellm-prose tbody tr:hover {
+  background: rgba(108, 92, 231, 0.03);
+}
+
+/* ─── Emphasis & Strong ──────────────────────────────────────── */
+
+.livellm-prose strong {
+  font-weight: 700;
+  color: var(--livellm-heading-color, #0f0f0f);
+}
+
+.livellm-prose em {
+  font-style: italic;
+}
+
+.livellm-prose mark,
+.livellm-prose .highlight {
+  background: linear-gradient(120deg, rgba(108, 92, 231, 0.12) 0%, rgba(108, 92, 231, 0.18) 100%);
+  padding: 0.1em 0.3em;
+  border-radius: 3px;
+  color: inherit;
+}
+
+/* ─── Images ─────────────────────────────────────────────────── */
+
+.livellm-prose img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--livellm-border-radius, 8px);
+  box-shadow: var(--livellm-shadow, 0 2px 8px rgba(0, 0, 0, 0.08));
+  margin: 1em 0;
+}
+
+/* ─── Definition Lists (if used) ─────────────────────────────── */
+
+.livellm-prose dl {
+  margin: 1em 0;
+}
+
+.livellm-prose dt {
+  font-weight: 700;
+  color: var(--livellm-heading-color, #0f0f0f);
+  margin-top: 0.75em;
+}
+
+.livellm-prose dd {
+  margin-left: 1.5em;
+  margin-bottom: 0.5em;
+  color: var(--livellm-text-secondary, #6c757d);
+}
+
+/* ─── Spacing between elements and components ────────────────── */
+
+.livellm-prose > *:first-child {
+  margin-top: 0;
+}
+
+.livellm-prose > *:last-child {
+  margin-bottom: 0;
+}
+
+/* Space before/after LiveLLM web components */
+.livellm-prose livellm-alert,
+.livellm-prose livellm-tabs,
+.livellm-prose livellm-chart,
+.livellm-prose livellm-form,
+.livellm-prose livellm-table-plus,
+.livellm-prose livellm-accordion,
+.livellm-prose livellm-steps,
+.livellm-prose livellm-timeline,
+.livellm-prose livellm-video,
+.livellm-prose livellm-pricing,
+.livellm-prose livellm-carousel,
+.livellm-prose livellm-file-preview,
+.livellm-prose livellm-calendar,
+.livellm-prose livellm-link-preview,
+.livellm-prose livellm-code-runner,
+.livellm-prose livellm-map {
+  display: block;
+  margin: 1.25em 0;
+}
+
+/* ─── Responsive adjustments ─────────────────────────────────── */
+
+@media (max-width: 600px) {
+  .livellm-prose {
+    font-size: 14px;
+    --livellm-prose-text-align: left;
+    --livellm-prose-max-width: 100%;
+  }
+
+  .livellm-prose h1 { font-size: 1.6em; }
+  .livellm-prose h2 { font-size: 1.35em; }
+  .livellm-prose h3 { font-size: 1.15em; }
+
+  .livellm-prose pre code {
+    font-size: 0.8em;
+  }
+
+  .livellm-prose blockquote {
+    padding: 0.75em 1em 0.75em 1.15em;
+  }
+
+  .livellm-prose blockquote::before {
+    font-size: 2em;
+    top: -6px;
+    left: 8px;
+  }
+}
