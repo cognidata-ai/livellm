@@ -1,0 +1,1 @@
+It seems write permission wasn't granted. Please approve the file write to create `specs/core.spec.md`, or let me know if you'd like me to write it to a different location.

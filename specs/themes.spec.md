@@ -1,0 +1,1 @@
+The write was blocked — please approve the file creation at `specs/themes.spec.md` and I'll proceed, or let me know if you'd like a different location.

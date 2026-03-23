@@ -1,0 +1,1 @@
+Please approve the write permission to create `specs/detectors.spec.md`, then I can proceed.

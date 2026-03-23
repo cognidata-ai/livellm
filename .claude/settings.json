@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls -la /Users/icurbelo/Documents/develop/livellm/.eslintrc* /Users/icurbelo/Documents/develop/livellm/.prettierrc*)",
+      "Bash(ls -la /Users/icurbelo/Documents/develop/livellm/.cursor* /Users/icurbelo/Documents/develop/livellm/.github*)",
+      "Bash(find /Users/icurbelo/Documents/develop -type f -name *sdd*)",
+      "Bash(find /Users/icurbelo/Documents/develop/sdd-kit -type f -name *.json -o -name *.md -o -name README*)",
+      "Bash(npx sdd-kit:*)",
+      "Bash(sdd init:*)",
+      "Bash(sdd arch:*)"
+    ]
+  }
+}
